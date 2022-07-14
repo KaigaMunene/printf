@@ -14,8 +14,8 @@ int count = 0;
 
 if (c)
 {
-    count = write(1, &c, 1);
-    return (count);
+count = write(1, &c, 1);
+return (count);
 }
 
 return (0);

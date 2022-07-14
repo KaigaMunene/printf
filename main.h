@@ -16,8 +16,8 @@ int (*check_specifier(const char *))(va_list);
  */
 typedef struct func
 {
-	char *t;
-	int (*f)(va_list);
+char *t;
+int (*f)(va_list);
 } func_t;
 
 int print_char(va_list);
