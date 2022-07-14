@@ -18,8 +18,8 @@ char *t;
 int (*f)(va_list);
 } print_t;
 
-int print_char(va_list c);
-int print_str(va_list s);
-int print_cent(va_list);
+int print_c(va_list c);
+int print_s(va_list s);
+int print_percent(va_list args);
 
 #endif
