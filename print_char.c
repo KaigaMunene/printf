@@ -2,18 +2,18 @@
 #include <stdlib.h>
 
 /**
- * print_char - prints a character to stdout
- * @c: variadic parameter
+ * print_c - prints a character to stdout
+ * @c: char to print
  *
  * Return: always 1
  */
 
 int print_c(va_list c)
 {
-	char ch = (char)va_arg(c, int);
+char ch = (char)va_arg(c, int);
 
-	_putchar(ch);
-	return (1);
+_putchar(ch);
+return (1);
 }
 
 /**
