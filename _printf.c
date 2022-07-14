@@ -1,6 +1,4 @@
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -14,43 +12,39 @@
 
 int _printf(const char *format, ...)
 {
-int i = 0, count = 0, value = 0;
-va_list args;
-va_start(args, format);
+unsigned int i = 0, count = 0;
+va_list valist;
 int (*f)(va_list);
+
 if (format == NULL)
 return (-1);
+va_start(valist, format);
+
 while (format[i])
 {
-if (format[i] != '%')
+for (; format[i] != '%' && format[i] != '\0'; i++)
 {
-value = write(1, &format[i], 1);
-count = count + value;
-i++;
-continue;
+_putchar(format[i]);
+count++;
 }
-if (format[i] == '%')
-{
-f = check_specifier(&format[i + 1]);
+if (!format[i])
+return (count);
+f = check_for_specifiers(&format[i + 1]);
 if (f != NULL)
 {
-value = f(args);
-count = count + value;
-i = i + 2;
+count += f(valist);
+i += 2;
 continue;
 }
-if (format[i + 1] == '\0')
-{
-break;
+if (!format[i + 1])
+return (-1);
+_putchar(format[i]);
+count++;
+if (format[i + 1] == '%')
+i += 2;
+else
+i++;
 }
-if (format[i + 1] != '\0')
-{
-value = write(1, &format[i + 1], 1);
-count = count + value;
-i = i + 2;
-continue;
-}
-}
-}
+va_end(valist);
 return (count);
 }

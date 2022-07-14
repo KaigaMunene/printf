@@ -1,22 +1,17 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * print_char - prints a character to stdout
- * @args: variadic parameter
+ * @c: variadic parameter
  *
- * Return: number of characters printed
+ * Return: always 1
  */
 
-int print_char(va_list args)
+int print_c(va_list c)
 {
-char c = (char)va_arg(args, int);
-int count = 0;
+	char ch = (char)va_arg(c, int);
 
-if (c)
-{
-count = write(1, &c, 1);
-return (count);
-}
-
-return (0);
+	_putchar(ch);
+	return (1);
 }
