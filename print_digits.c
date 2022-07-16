@@ -1,12 +1,12 @@
 #include "main.h"
 
-unsigned int print_di(va_list args, buffer_t *output,
+unsigned int convert_di(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int print_b(va_list args, buffer_t *output,
+unsigned int convert_b(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int print_u(va_list args, buffer_t *output,
+unsigned int convert_u(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int print_o(va_list args, buffer_t *output,
+unsigned int convert_o(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
 
 /**
@@ -21,7 +21,7 @@ unsigned int print_o(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int print_di(va_list args, buffer_t *output,
+unsigned int convert_di(va_list args, buffer_t *output,
 unsigned char flags, int wid, int prec, unsigned char len)
 {
 long int d, copy;
@@ -80,7 +80,7 @@ return (ret);
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int print_b(va_list args, buffer_t *output,
+unsigned int convert_b(va_list args, buffer_t *output,
 unsigned char flags, int wid, int prec, unsigned char len)
 {
 unsigned int num;
@@ -104,7 +104,7 @@ return (convert_ubase(output, num, "01", flags, wid, prec));
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int print_o(va_list args, buffer_t *output,
+unsigned int convert_o(va_list args, buffer_t *output,
 unsigned char flags, int wid, int prec, unsigned char len)
 {
 unsigned long int num;
@@ -131,7 +131,7 @@ return (ret);
 }
 
 /**
- * print_u - Converts an unsigned int argument to decimal and
+ * convert_u - Converts an unsigned int argument to decimal and
  *               stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -142,7 +142,7 @@ return (ret);
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int print_u(va_list args, buffer_t *output,
+unsigned int convert_u(va_list args, buffer_t *output,
 unsigned char flags, int wid, int prec, unsigned char len)
 {
 unsigned long int num;

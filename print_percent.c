@@ -1,14 +1,14 @@
 #include "main.h"
 
-unsigned int print_c(va_list args, buffer_t *output,
+unsigned int convert_c(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int print_percent(va_list args, buffer_t *output,
+unsigned int convert_percent(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
-unsigned int print_p(va_list args, buffer_t *output,
+unsigned int convert_p(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len);
 
 /**
- * print_c - Converts an argument to an unsigned char and
+ * convert_c - Converts an argument to an unsigned char and
  *             stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -19,7 +19,7 @@ unsigned int print_p(va_list args, buffer_t *output,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int print_c(va_list args, buffer_t *output,
+unsigned int convert_c(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
 char c;
@@ -38,7 +38,7 @@ return (ret);
 }
 
 /**
- * print_percent - Stores a percent sign to a
+ * convert_percent - Stores a percent sign to a
  *                   buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -49,7 +49,7 @@ return (ret);
  *
  * Return: The number of bytes stored to the buffer (always 1).
  */
-unsigned int print_percent(va_list args, buffer_t *output,
+unsigned int convert_percent(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
 char percent = '%';
@@ -67,7 +67,7 @@ return (ret);
 }
 
 /**
- * print_p - Converts the address of an argument to hex and
+ * convert_p - Converts the address of an argument to hex and
  *             stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers.
@@ -78,7 +78,7 @@ return (ret);
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int print_p(va_list args, buffer_t *output,
+unsigned int convert_p(va_list args, buffer_t *output,
 unsigned char flags, int wid, int prec, unsigned char len)
 {
 char *null = "(nil)";
