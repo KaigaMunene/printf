@@ -11,9 +11,9 @@ int _printf(const char *format, ...);
  */
 void cleanup(va_list args, buffer_t *output)
 {
-	va_end(args);
-	write(1, output->start, output->len);
-	free_buffer(output);
+va_end(args);
+write(1, output->start, output->len);
+free_buffer(output);
 }
 
 /**
